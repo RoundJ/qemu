@@ -2963,7 +2963,7 @@ static void set_memory_options(uint64_t *ram_slots, ram_addr_t *maxram_size,
 int main(int argc, char **argv, char **envp)
 {
 	///lily
-	printf("lily this is test\n");
+	printf("lily this is test~ \n");
     int i;
     int snapshot, linux_boot;
     const char *initrd_filename;
