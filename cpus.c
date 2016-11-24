@@ -1319,7 +1319,8 @@ void resume_all_vcpus(void)
 #define VCPU_THREAD_NAME_SIZE 16
 
 static void qemu_tcg_init_vcpu(CPUState *cpu)
-{
+{	
+	printf("~ qemu_tcg_init_vcpu\n");
     char thread_name[VCPU_THREAD_NAME_SIZE];
     static QemuCond *tcg_halt_cond;
     static QemuThread *tcg_cpu_thread;
@@ -1349,6 +1350,7 @@ static void qemu_tcg_init_vcpu(CPUState *cpu)
 
 static void qemu_kvm_start_vcpu(CPUState *cpu)
 {
+	printf("~ qemu_kvm_start_vcpu\n");
     char thread_name[VCPU_THREAD_NAME_SIZE];
 
     cpu->thread = g_malloc0(sizeof(QemuThread));

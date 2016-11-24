@@ -1461,6 +1461,7 @@ static int kvm_max_vcpus(KVMState *s)
 
 static int kvm_init(MachineState *ms)
 {
+	printf("~ kvm_init\n");
     MachineClass *mc = MACHINE_GET_CLASS(ms);
     static const char upgrade_note[] =
         "Please upgrade to at least kernel 2.6.29 or recent kvm-kmod\n"
@@ -1497,6 +1498,7 @@ static int kvm_init(MachineState *ms)
 #endif
     s->vmfd = -1;
     s->fd = qemu_open("/dev/kvm", O_RDWR);
+	printf("~ qemu_open(dev/kvm)\n");
     if (s->fd == -1) {
         fprintf(stderr, "Could not access KVM kernel module: %m\n");
         ret = -errno;
@@ -1504,6 +1506,7 @@ static int kvm_init(MachineState *ms)
     }
 
     ret = kvm_ioctl(s, KVM_GET_API_VERSION, 0);
+	printf("kvm_ioctl KVM_GET_API_VERSION: %x\n ", KVM_GET_API_VERSION);
     if (ret < KVM_API_VERSION) {
         if (ret >= 0) {
             ret = -EINVAL;
